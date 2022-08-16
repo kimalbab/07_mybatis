@@ -1,0 +1,13 @@
+package com.br.mybatis.board.model.vo;
+
+public class Board {
+	
+	private int boardNo;
+	private String boardTitle;
+	private String boardContent;
+	private int boardWriter;
+	private int count;
+	private Date createDate;
+	private String status;
+
+}

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberMapper">
+<!-- namespace : 해당 mapper 파일만의 고유한 별칭 -->
+
+<!-- entry의 경우는 properties 파일에서만 사용가능! -->
+	<insert id="insertMember" parameterType="com.br.mybatis.member.model.vo.Member">
+		insert
+		  into member
+		  (
+		  	user_no
+		  , user_id
+		  , user_pwd
+		  , user_name
+		  , email
+		  , birthday
+		  , gender
+		  , phone
+		  , address
+		  )
+		  values
+		  (
+		    seq_uno.nextval
+		  , #{userId}
+		  , #{userPwd}
+		  , #{userName}
+		  , #{email}
+		  , #{birthday}
+		  , #{gender}
+		  , #{phone}
+		  , #{address}
+		  )
+		  
+	</insert>
+	
+	<!-- SELECT  문 에서는 resultType="", resultMap="" 둘 중 하나만 쓰기 -->
+	<select id="loginMember" parameterType="com.br.mybatis.member.model.vo.Member"
+			resultType="" >
+		select
+				user_no
+			  , user_id
+			  , user_pwd
+			  , user_name
+			  , email
+			  , birthday
+			  , gender
+			  , phone
+			  , address
+			  , enroll_date
+			  , modify_date
+			  , status
+		  from  member
+		 where  user_id=#{userId}
+		   and  user_pwd=#{userPwd}
+		   and  status='Y'
+	</select>
+
+</mapper>

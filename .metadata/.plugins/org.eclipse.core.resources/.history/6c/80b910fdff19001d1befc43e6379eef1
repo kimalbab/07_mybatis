@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1 align="center">Welcome to MyBatis World</h1>
+	<br>
+	<div class="login-area" align="right">
+		
+		<c:choose>
+			<c:when test="${ }">
+			<!-- 로고인 전 -->
+			
+			</c:when>
+			<c:otherwise>
+			<!-- 로고인 후 -->
+			
+			</c:otherwise>
+		</c:choose>
+		
+	</div>
+</body>
+</html>

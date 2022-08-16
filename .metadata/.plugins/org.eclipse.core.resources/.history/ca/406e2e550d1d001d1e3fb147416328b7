@@ -1,0 +1,23 @@
+package com.br.mybatis.member.model.dao;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.br.mybatis.member.model.vo.Member;
+
+public class MemberDao {
+	
+	public int insertMember(SqlSession sqlSession, Member m) {
+		
+		
+		/*
+		 * sqlSession 에서 제공하는 메소드를 이용해서 sql문 찾아서 곧바로 실행하고 결과받기
+		 * 
+		 * sqlSession.sql문종류에맞는메소드("매퍼의별칭.해당sql문고유아이디" [, 그 sql문 완성시킬객체])
+		 */
+		
+		int result = sqlSession.insert("memberMapper.insertMember", m);
+		
+		
+	}
+
+}

@@ -1,0 +1,5 @@
+package com.br.mybatis.common.model.vo;
+
+public class PageInfo {
+
+}

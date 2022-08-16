@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberMapper">
+<!-- namespace : 해당 mapper 파일만의 고유한 별칭 -->
+
+<!-- entry의 경우는 properties 파일에서만 사용가능! -->
+	<insert id="insertMember" parameter type="">
+		insert
+		  into member
+		  (
+		  	user_no
+		  , user_id
+		  , user_pwd
+		  , user_name
+		  , email
+		  , birthday
+		  , gender
+		  , phone
+		  , address
+		  )
+		  values
+		  (
+		    seq_uno.nextval
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  )
+		  
+	</insert>
+
+</mapper>

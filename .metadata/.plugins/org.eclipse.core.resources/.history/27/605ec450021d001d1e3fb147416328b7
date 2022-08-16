@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  
+  <settings>
+	<setting name="jdbcTypeForNull" value="NULL"/>
+	<!-- 혹시라도 null인 데이터가 들어갔다면 DB에도 NULL로 들어가라! 필수구문 -->  
+  </settings>
+  
+  <typeAliases>
+  	<!-- typeAliases : VO 클래스들의 풀 클래스명을 단순한 클래스명으로 사용하기 위해 별칭을 등록할 수 있는 영역 -->
+  </typeAliases>
+  
+  <environments default="development">
+  	<!-- environments : mybatis에서 연동할 DB 정보들을 등록하는 영역 -->
+  	<!-- environment id를 구분해서 연결할 db를 여러개 구성할 수 있음 -->
+  	<!-- default : 기본적으로 연결한 설정 정보를 설정하는 속성 -->
+  	<environment id="development">
+  		<!-- 
+  			* transactionManager 는 JDBC와 MANAGED 중 하나를 선택
+  				- JDBC : 트랜젝션을 개발자가 직접 관리 (수동 commit)
+  				- MANAGED : 트랜젝션에 대해서 개발자가 어떠한 영향도 행사하지 않겠다 (자동 commit)
+  		 -->
+		<transactionManager type="JDBC"/>  	
+  	
+  	</environment>
+  </environments>
+  
+</configuration>

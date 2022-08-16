@@ -1,0 +1,5 @@
+package com.br.mybatis.common.template;
+
+public class Template {
+
+}

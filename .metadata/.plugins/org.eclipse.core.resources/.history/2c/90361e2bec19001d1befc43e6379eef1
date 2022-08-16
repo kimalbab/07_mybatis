@@ -1,0 +1,17 @@
+package com.br.mybatis.board.model.vo;
+
+import java.sql.Date;
+
+public class Reply {
+
+	private int replyNo;
+	private String replyContent;
+	private int refBno;
+	private int replyWriter;
+	private Date createDate;
+	private String status;
+	
+	public Reply() {
+		
+	}
+}
