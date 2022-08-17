@@ -30,8 +30,10 @@ public class MemberInsertController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		//request.setCharacterEncoding("UTF-8");
+		// 위의 과정 할 필요 없음 (인코딩 필터를 거쳐왔을 것)
 		
-		// 이제는 인코딩 필터로 utf-8로 인코딩되어 오기때문에 이제는 인코딩 할 필요가 없음
 		String userId = request.getParameter("userId");
 		String userPwd = request.getParameter("userPwd");
 		String userName = request.getParameter("userName");
@@ -42,17 +44,16 @@ public class MemberInsertController extends HttpServlet {
 		String address = request.getParameter("address");
 		
 		Member m = new Member(userId, userPwd, userName, email, birthday, gender, phone, address);
-		
+	
 		int result = new MemberServiceImpl().insertMember(m);
 		
-		if(result > 0) {
-			// 회원가입 성공 => 메인페이지
+		if(result > 0) { // 회원가입 성공 => 메인페이지
 			response.sendRedirect(request.getContextPath());
-		} else {
-			// 회원가입 실패 => 에러페이지포워딩
+		}else { // 회원가입 실패 => 에러페이지 포워딩
 			request.setAttribute("errorMsg", "회원가입에 실패했습니다.");
-			request.getRequestDispatcher("WEB-INF/views/common/errorPage.jsp").forward(request, response);;
+			request.getRequestDispatcher("WEB-INF/views/common/errorPage.jsp").forward(request, response);
 		}
+		
 	}
 
 	/**

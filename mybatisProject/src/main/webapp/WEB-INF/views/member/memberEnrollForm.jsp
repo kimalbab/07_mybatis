@@ -1,39 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
-<style>
-    .outer{
-        background-color: black;
-        color: white;
-        width: 1000px;
-        margin: auto;
-        margin-top:50px;
-    }
-    #enroll-form table{
-        margin: auto;
-        align-items: center;
-    }
-    #enroll-form input{
-        margin:5px;
-    }
-</style>
+<title>Insert title here</title>
 </head>
 <body>
 	
-	<jsp:include page="../common/menubar.jsp"></jsp:include>
+	<jsp:include page="../common/menubar.jsp"/>
+	
 	<div class="outer">
-      <br>
-      <h1 align="center">회원가입</h1>
-      <br>
-      
-      <form action="insert.me" method="post">
-         
-         <table align="center">
+		<br>
+		<h1 align="center">회원가입</h1>
+		<br>
+		
+		<form action="insert.me" method="post">
+			
+			<table align="center">
                 <tr>
                     <td>* ID</td>
                     <td><input type="text" name="userId" required></td>
@@ -75,11 +60,16 @@
                 <button type="reset">초기화</button>
                 <button type="submit">회원가입</button>
             </div>
-         
-      </form>
-      
-      <br><br>
-   </div>
+			
+		</form>
+		
+		<br><br>
+	</div>
+	
+	
+	
+	
+	
 	
 	
 </body>

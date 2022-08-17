@@ -2,18 +2,16 @@ package com.br.mybatis.common.model.vo;
 
 public class PageInfo {
 	
-	private int listCount; // 총 게시글의 갯수 보관
-	private int currentPage; // 현재 페이지 (사용자가 요청한 페이지)
-	private int pageLimit; // 하단에 보여질 페이징바의 페이지 목록 최대갯수
-	private int boardLimit; // 해당 페이지에 보여질 게시글 최대 갯수
+	private int listCount;		// 총 게시글 갯수
+	private int currentPage; 	// 현재 페이지 (사용자가 요청한 페이지)
+	private int pageLimit; 		// 하단에 보여질 페이징바의 페이지 목록 최대 갯수
+	private int boardLimit;		// 해당 페이지에 보여질 게시글 최대 갯수
 	
-	private int maxPage; // 가장 마지막 체이지 수 (listCount, boardLimit으로 구함)
-	private int startPage; // 해당 페이지 하단의 페이징바의 시작수 (pageLimit, currentPage로 구함)
-	private int endPage; // 해당 페이지 하단의 끝수 (startPage, pageLimit, maxPage 로 구함)
+	private int maxPage;		// 가장 마지막 페이지 수 (listCount, boardLimit을 가지고 구함)
+	private int startPage;		// 해당 페이지 하단의 페이징바의 시작 수 (pageLimit, currentPage를 가지고 구함)
+	private int endPage;		// 해당 페이지 하단의 페이징바의 끝 수 (startPage, pageLimit, maxPage를 가지고 구함)
 	
-	public PageInfo() {
-		
-	}
+	public PageInfo() {}
 
 	public PageInfo(int listCount, int currentPage, int pageLimit, int boardLimit, int maxPage, int startPage,
 			int endPage) {
@@ -91,4 +89,5 @@ public class PageInfo {
 	}
 	
 	
+
 }

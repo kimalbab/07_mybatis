@@ -4,7 +4,6 @@ import java.sql.Date;
 
 public class Member {
 	
-	// db의 컬럼을 vo 클래스의 field를 연결
 	private int userNo;
 	private String userId;
 	private String userPwd;
@@ -18,9 +17,7 @@ public class Member {
 	private Date modifyDate;
 	private String status;
 	
-	public Member() {
-		
-	}
+	public Member() {}
 
 	public Member(int userNo, String userId, String userPwd, String userName, String email, String birthday,
 			String gender, String phone, String address, Date enrollDate, Date modifyDate, String status) {
@@ -150,13 +147,11 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "Member [userNo=" +  userNo + ", userId=" + userId + ", userPwd=" + userPwd + ", userName=" + userName
+		return "Member [userNo=" + userNo + ", userId=" + userId + ", userPwd=" + userPwd + ", userName=" + userName
 				+ ", email=" + email + ", birthday=" + birthday + ", gender=" + gender + ", phone=" + phone
 				+ ", address=" + address + ", enrollDate=" + enrollDate + ", modifyDate=" + modifyDate + ", status="
 				+ status + "]";
 	}
 	
-	
-	
-	
+
 }

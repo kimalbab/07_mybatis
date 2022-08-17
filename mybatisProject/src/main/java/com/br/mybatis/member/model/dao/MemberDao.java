@@ -8,41 +8,75 @@ public class MemberDao {
 	
 	public int insertMember(SqlSession sqlSession, Member m) {
 		
-		
 		/*
-		 * sqlSession 에서 제공하는 메소드를 이용해서 sql문 찾아서 곧바로 실행하고 결과받기
+		 * 기존에 순수 JDBC 과정 
 		 * 
-		 * sqlSession.sql문종류에맞는메소드("매퍼의별칭.해당sql문고유아이디" [, 그 sql문 완성시킬객체])
+		 * int result = 0;
+		 * PreparedStatement pstmt = null;
+		 * String sql = prop.getProperty("insertMember");
+		 * 
+		 * try{
+		 * 		pstmt = conn.prepareStatment(sql);
+		 * 		pstmt.setString(1, m.getUserId());
+		 * 		pstmt.setString(2, m.getUserPwd());
+		 * 		.....
+		 * 
+		 * 		result = pstmt.executeUpdate();
+		 * 
+		 * } catch(XXX){
+		 * 
+		 * } finally{
+		 *   close(pstmt);
+		 * }
 		 */
 		
-		int result = sqlSession.insert("memberMapper.insertMember", m);
-		return result;
+		/*
+		 * sqlSession에서 제공하는 메소드를 이용해서
+		 * sql문 찾아서 곧바로 실행하고 결과바로받음
+		 * 
+		 * 결과 = sqlSession.sql문종류에맞는메소드("매퍼의별칭.해당sql문고유한id", [그sql문을 완성시킬 객체]);
+		 */
 		
+		//int result = sqlSession.insert("memberMapper.insertMember", m);
+		//return result;
+		return sqlSession.insert("memberMapper.insertMember", m);
 	}
 	
 	public Member loginMember(SqlSession sqlSession, Member m) {
+		
 		/*
 		 * Member loginUser = null;
 		 * PreparedStatement pstmt = null;
-		 * ResultSet rswt = null
+		 * ResultSet rset = null;
 		 * 
 		 * String sql = prop.getProperty("loginMember");
 		 * 
 		 * try{
-		 * 		pstmt=conn.prepareStatement(sql);
+		 * 		pstmt = conn.prepareStatement(sql);
 		 * 		pstmt.setString(1, m.getUserId());
 		 * 		pstmt.setString(2, m.getUserPwd());
-		 * 		rset = pstmt.executeQuery();
-		 * } 
 		 * 
-		 * if(rset.next())}
-		 * 		loginUser = new Member(rset.getInt("user_no),...
+		 * 		rset = pstmt.executeQuery();
+		 * 
+		 * 		if(rset.next()){
+		 * 			loginUser = new Member(rset.getInt("user_no"),
+		 * 								   rset.getString("user_id"),
+		 * 								   ...);
+		 *  	}
+		 * }catch(XXXX) {
+		 * 
 		 * }
+		 * 
 		 */
 		
-		//selectOne의 조회결과가 없다면 null을 반환해줌
+		// selectOne 메소드 : 조회결과가 없다면 null반환
 		Member loginUser = sqlSession.selectOne("memberMapper.loginMember", m);
 		return loginUser;
 	}
+	
+	
+	
+	
+	
 
 }

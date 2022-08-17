@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,17 +8,15 @@
 <title>Insert title here</title>
 <style>
 	.login-area a{
-		text-decoration : none;
-		color : black;
+		text-decoration:none;
+		color:black;
 		font-size:12px;
 	}
-	
 	.nav-area{
-		background-color:black;
+		background:black;
 		color:white;
 		height:50px;
 	}
-	
 	.menu{
 		display:table-cell;
 		width:250px;
@@ -27,9 +25,8 @@
 		font-size:20px;
 		font-weight:bold;
 	}
-	
 	.menu:hover{
-		background-color:darkgray;
+		background:darkgray;
 		cursor:pointer;
 	}
 	
@@ -45,11 +42,12 @@
 <body>
 	<h1 align="center">Welcome to MyBatis World</h1>
 	<br>
+	
 	<div class="login-area" align="right">
 		
 		<c:choose>
 			<c:when test="${ empty sessionScope.loginUser }">
-			<!-- 로고인 전 -->
+				<!-- 로그인 전일 경우 -->
 				<form action="login.me" method="post">
 					<table>
 						<tr>
@@ -64,14 +62,14 @@
 						<tr>
 							<td colspan="3" align="center">
 								<a href="enrollForm.me">회원가입</a>
-								<a href="">아이디 / 비밀번호 찾기</a>
+								<a href="">아이디/비번찾기</a>
 							</td>
 						</tr>
 					</table>
 				</form>
 			</c:when>
 			<c:otherwise>
-			<!-- 로고인 후 -->
+				<!-- 로그인 후일 경우 -->
 				<div>
 					<table>
 						<tr>
@@ -87,25 +85,18 @@
 		</c:choose>
 		
 	</div>
+	
 	<br>
+	
 	<div class="nav-area" align="center">
-		<div class="menu" onclick="location.href='${ pageContext.servletContext.contextPath }';">HOME</div>	
-		<div class="menu">공지사항</div>	
-		<div class="menu">게시판</div>	
-		<div class="menu">ETC</div>	
+		<div class="menu" onclick="location.href='${pageContext.servletContext.contextPath}';">HOME</div>
+		<div class="menu">공지사항</div>
+		<div class="menu" onclick="location.href='list.bo?cpage=1';">게시판</div>
+		<div class="menu">ETC</div>
 	</div>
 	
+	
+	
+	
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
 </html>

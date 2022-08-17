@@ -7,16 +7,14 @@ public class Board {
 	private int boardNo;
 	private String boardTitle;
 	private String boardContent;
-	private int boardWriter;
+	private String boardWriter;
 	private int count;
 	private Date createDate;
 	private String status;
 	
-	public Board() {
-		
-	}
+	public Board() {}
 
-	public Board(int boardNo, String boardTitle, String boardContent, int boardWriter, int count, Date createDate,
+	public Board(int boardNo, String boardTitle, String boardContent, String boardWriter, int count, Date createDate,
 			String status) {
 		super();
 		this.boardNo = boardNo;
@@ -52,11 +50,11 @@ public class Board {
 		this.boardContent = boardContent;
 	}
 
-	public int getBoardWriter() {
+	public String getBoardWriter() {
 		return boardWriter;
 	}
 
-	public void setBoardWriter(int boardWriter) {
+	public void setBoardWriter(String boardWriter) {
 		this.boardWriter = boardWriter;
 	}
 
@@ -92,4 +90,5 @@ public class Board {
 	}
 	
 	
+
 }

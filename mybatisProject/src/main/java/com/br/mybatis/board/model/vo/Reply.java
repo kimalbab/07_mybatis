@@ -3,23 +3,21 @@ package com.br.mybatis.board.model.vo;
 import java.sql.Date;
 
 public class Reply {
-
+	
 	private int replyNo;
 	private String replyContent;
-	private int refBno;
-	private int replyWriter;
+	private int refBoardNo;
+	private String replyWriter;
 	private Date createDate;
 	private String status;
-	
-	public Reply() {
-		
-	}
 
-	public Reply(int replyNo, String replyContent, int refBno, int replyWriter, Date createDate, String status) {
+	public Reply() {}
+
+	public Reply(int replyNo, String replyContent, int refBoardNo, String replyWriter, Date createDate, String status) {
 		super();
 		this.replyNo = replyNo;
 		this.replyContent = replyContent;
-		this.refBno = refBno;
+		this.refBoardNo = refBoardNo;
 		this.replyWriter = replyWriter;
 		this.createDate = createDate;
 		this.status = status;
@@ -41,19 +39,19 @@ public class Reply {
 		this.replyContent = replyContent;
 	}
 
-	public int getRefBno() {
-		return refBno;
+	public int getRefBoardNo() {
+		return refBoardNo;
 	}
 
-	public void setRefBno(int refBno) {
-		this.refBno = refBno;
+	public void setRefBoardNo(int refBoardNo) {
+		this.refBoardNo = refBoardNo;
 	}
 
-	public int getReplyWriter() {
+	public String getReplyWriter() {
 		return replyWriter;
 	}
 
-	public void setReplyWriter(int replyWriter) {
+	public void setReplyWriter(String replyWriter) {
 		this.replyWriter = replyWriter;
 	}
 
@@ -75,8 +73,8 @@ public class Reply {
 
 	@Override
 	public String toString() {
-		return "Reply [replyNo=" + replyNo + ", replyContent=" + replyContent + ", refBno=" + refBno + ", replyWriter="
-				+ replyWriter + ", createDate=" + createDate + ", status=" + status + "]";
+		return "Reply [replyNo=" + replyNo + ", replyContent=" + replyContent + ", refBoardNo=" + refBoardNo
+				+ ", replyWriter=" + replyWriter + ", createDate=" + createDate + ", status=" + status + "]";
 	}
 	
 	

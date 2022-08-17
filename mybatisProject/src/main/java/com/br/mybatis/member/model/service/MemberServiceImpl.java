@@ -13,37 +13,39 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int insertMember(Member m) {
 		/*
-		 * 기존 방식
-		 * 
+		 * 기존의 방식
 		 * Connection conn = JDBCTemplate.getConnection();
-		 * int result = new MemberDao().insertMember(m)
-		 * if(result > 0) {
-		 * 		commit(conn)
-		 * 	} else {
-		 * 		rollback(conn)
-		 *  }
-		 *  
-		 *  close(conn);
-		 *  return result;
+		 * int result = new MemberDao().insertMember(conn, m);
+		 * if(result>0) { 
+		 * 		JDBCTemplate.commit(conn);
+		 * }else{
+		 * 		JDBCTemplate.rollback(conn);
+		 * }
+		 * JDBCTemplate.close(conn);
+		 * 
+		 * return result;
 		 */
-		SqlSession sqlSession = Template.getSqlSession();
-		//mybatis-config.xml 문서,xxx-mapper.xml 문서들도 읽어들여짐
+		SqlSession sqlSession = Template.getSqlSession(); // mybatis-config.xml 문서읽어들여짐, xxx-mapper.xml 문서들도 읽어들여짐
 		int result = mDao.insertMember(sqlSession, m);
 		
 		if(result > 0) {
 			sqlSession.commit();
-		} 
+		}
 		
 		sqlSession.close();
+		
 		return result;
 	}
 
 	@Override
 	public Member loginMember(Member m) {
+		
 		SqlSession sqlSession = Template.getSqlSession();
 		Member loginUser = mDao.loginMember(sqlSession, m);
+		
 		sqlSession.close();
 		return loginUser;
+		
 	}
 
 	@Override
