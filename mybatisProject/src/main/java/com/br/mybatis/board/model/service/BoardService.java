@@ -20,6 +20,10 @@ public interface BoardService {
 	Board selectBoard(int boardNo);
 	ArrayList<Reply> selectReplyList(int boardNo);
 	
+	// 4. 게시글 검색리스트 조회
+	int selectSearchCount(String condition, String keyword);
+	ArrayList<Board> selectSearchList(String condition, String keyword, PageInfo pi);
+	
 	
 
 }

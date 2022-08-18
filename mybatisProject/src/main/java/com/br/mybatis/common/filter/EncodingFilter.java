@@ -46,7 +46,7 @@ public class EncodingFilter implements Filter {
 		 * 2) 어노테이션을 이용하는 방법
 		 * 	  > 해당 filter클래스 상단에 @WebFilter 어노테이션을 이용
 		 */
-		System.out.println("인코딩 필터 실행됨");
+		//System.out.println("인코딩 필터 실행됨");
 		request.setCharacterEncoding("UTF-8");
 		
 		chain.doFilter(request, response);

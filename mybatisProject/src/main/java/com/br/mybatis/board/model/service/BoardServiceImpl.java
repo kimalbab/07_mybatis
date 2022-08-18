@@ -44,17 +44,46 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public int increaseCount(int boardNo) {
-		return 0;
+		SqlSession sqlSession = getSqlSession();
+		int result = bDao.increaseCount(sqlSession, boardNo);
+		
+		if(result > 0) {
+			sqlSession.commit();
+		}
+		
+		sqlSession.close();
+		return result;
 	}
 
 	@Override
 	public Board selectBoard(int boardNo) {
-		return null;
+		SqlSession sqlSession = getSqlSession();
+		Board b = bDao.selectBoard(sqlSession, boardNo);
+		sqlSession.close();
+		return b;
 	}
 
 	@Override
 	public ArrayList<Reply> selectReplyList(int boardNo) {
-		return null;
+		SqlSession sqlSession = getSqlSession();
+		ArrayList<Reply> list = bDao.selectReplyList(sqlSession, boardNo);
+		sqlSession.close();
+		return list;
+	}
+
+	@Override
+	public int selectSearchCount(String condition, String keyword) {
+		SqlSession sqlSession = getSqlSession();
+		int searchCount = bDao.selectSearchCount(sqlSession, condition, keyword);
+		sqlSession.close();
+		return searchCount;
+	}
+
+	@Override
+	public ArrayList<Board> selectSearchList(String condition, String keyword, PageInfo pi) {
+		SqlSession sqlSession = getSqlSession();
+		ArrayList<Board> list = bDao.selectSearchList(sqlSession, condition, keyword, pi);
+		return list;
 	}
 
 }

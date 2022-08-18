@@ -11,7 +11,15 @@
         border:1px solid white;
         text-align:center;
     }
+    .outer a{
+    	color:white;
+    	text-decoration:none;
+    }
+    .outer a:hover{
+    	color:gray;
+    }
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 	<jsp:include page="../common/menubar.jsp" />
@@ -23,18 +31,27 @@
 
         <!-- 검색영역 -->
         <div id="search-area">
-            <form action="">
+            <form action="search.bo" method="get">
+            	<input type="hidden" name="cpage" value="1">
                 <select name="condition">
                     <option value="writer">작성자</option>
                     <option value="title">제목</option>
                     <option value="content">내용</option>
                 </select>
-                <input type="text" name="keyword">
+                <input type="text" name="keyword" value="${ keyword }">
                 <button type="submit">검색</button>
             </form>
         </div>
         <br>
-
+        
+        <!-- 검색 후에 보는 페이지일 경우 -->
+        <c:if test="${ not empty condition }">
+			<script>
+				$(function(){
+					$("option[value=${condition}]").attr("selected", true);
+				})
+			</script>
+		</c:if>
         <!-- 글작성버튼영역 -->
         <c:if test="${ not empty loginUser }">
 	        <div id="enroll-btn">
@@ -66,7 +83,7 @@
                 		<c:forEach var="b" items="${ list }">
                 			<tr>
                 				<td>${ b.boardNo }</td>
-                				<td>${ b.boardTitle }</td>
+                				<td><a href="detail.bo?no=${ b.boardNo }">${ b.boardTitle }</a></td>
                 				<td>${ b.boardWriter }</td>
                 				<td>${ b.count }</td>
                 				<td>${ b.createDate }</td>
@@ -84,15 +101,36 @@
         <div id="paging-area">
 
 			<c:if test="${ pi.currentPage ne 1 }">
-            	<a href="list.bo?cpage=${ pi.currentPage-1 }">[이전]</a>
+				<c:choose>
+					<c:when test="${ empty condition }">
+						<a href="list.bo?cpage=${ pi.currentPage-1 }">[이전]</a>
+					</c:when>
+					<c:otherwise>
+						<a href="search.bo?cpage=${ pi.currentPage-1 }&condition=${condition}&keyword=${keyword}">[이전]</a>
+					</c:otherwise>				
+				</c:choose>
 			</c:if>
 			
 			<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
-            	<a href="list.bo?cpage=${ p }">[${ p }]</a>
+				<c:choose>
+					<c:when test="${ empty condition }">
+            			<a href="list.bo?cpage=${ p }">[${ p }]</a>
+            		</c:when>
+            		<c:otherwise>
+            			<a href="search.bo?cpage=${ p }&condition=${condition}&keyword=${keyword}">[${ p }]</a>
+            		</c:otherwise>
+            	</c:choose>
             </c:forEach>
 
 			<c:if test="${ pi.currentPage ne pi.maxPage }">
-            	<a href="list.bo?cpage=${ pi.currentPage+1 }">[다음]</a>
+            	<c:choose>
+            		<c:when test="${ empty condition }">
+            			<a href="list.bo?cpage=${ pi.currentPage+1 }">[다음]</a>
+            		</c:when>
+            		<c:otherwise>
+            			<a href="search.bo?cpage=${ pi.currentPage+1 }&condition=${condition}&keyword=${keyword}">[다음]</a>
+            		</c:otherwise>
+            	</c:choose>
             </c:if>
 
         </div>
