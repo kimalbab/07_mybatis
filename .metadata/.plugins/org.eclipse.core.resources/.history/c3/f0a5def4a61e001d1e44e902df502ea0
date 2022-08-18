@@ -1,0 +1,57 @@
+package com.br.mybatis.board.controller;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.br.mybatis.board.model.service.BoardService;
+import com.br.mybatis.board.model.service.BoardServiceImpl;
+import com.br.mybatis.common.model.vo.PageInfo;
+import com.br.mybatis.common.template.Pagination;
+
+/**
+ * Servlet implementation class BoardSearchController
+ */
+@WebServlet("/search.bo")
+public class BoardSearchController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public BoardSearchController() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String condition = request.getParameter("condition");
+		String keyword = request.getParameter("keyword");
+		
+		BoardService bService = new BoardServiceImpl();
+		
+		//--------- 검색결과에 맞는 페이징처리 ----------
+		int searchCount = bService.selectSearchCount(condition, keyword);
+		int currentPage = Integer.parseInt(request.getParameter("cpage"));
+		
+		PageInfo pi = Pagination.getPageInfo(currentPage, currentPage, searchCount, currentPage);
+		
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}
